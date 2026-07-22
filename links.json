@@ -1,0 +1,19 @@
+{
+  "windows": [
+    { "src": "shell/powershell/Microsoft.PowerShell_profile.ps1", "dest": "$PROFILE" },
+    { "src": "git/.gitconfig", "dest": "~/.gitconfig" },
+    { "src": "git/.gitignore_global", "dest": "~/.gitignore_global" },
+    { "src": "claude/CLAUDE.md", "dest": "~/.claude/CLAUDE.md" },
+    { "src": "claude/settings.json", "dest": "~/.claude/settings.json" },
+    { "src": "editor/vscode/settings.json", "dest": "$env:APPDATA/Code/User/settings.json" },
+    { "src": "editor/vscode/keybindings.json", "dest": "$env:APPDATA/Code/User/keybindings.json" }
+  ],
+  "linux": [
+    { "src": "shell/bash/.bashrc", "dest": "~/.bashrc" },
+    { "src": "shell/zsh/.zshrc", "dest": "~/.zshrc" },
+    { "src": "git/.gitconfig", "dest": "~/.gitconfig" },
+    { "src": "git/.gitignore_global", "dest": "~/.gitignore_global" },
+    { "src": "claude/CLAUDE.md", "dest": "~/.claude/CLAUDE.md" },
+    { "src": "claude/settings.json", "dest": "~/.claude/settings.json" }
+  ]
+}

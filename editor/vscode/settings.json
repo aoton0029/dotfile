@@ -1,0 +1,92 @@
+{
+    "editor.largeFileOptimizations": false,
+    "python.defaultInterpreterPath": "",
+    "explorer.confirmDelete": false,
+    "emmet.variables": {
+        "lang": "ja"
+    },
+    "emmet.syntaxProfiles": {},
+    "git.autofetch": true,
+    "explorer.confirmDragAndDrop": false,
+    "git.confirmSync": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "git.enableSmartCommit": true,
+     // Conda activateできるようにVSCodeのターミナル/プロファイルの設定変更
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+      "PowerShell": {
+          "source": "PowerShell",
+          "icon": "terminal-powershell"
+      },
+      "Command Prompt": {
+          "path": [
+              "${env:windir}\\Sysnative\\cmd.exe",
+              "${env:windir}\\System32\\cmd.exe"
+          ],
+          "args": [
+              "/k",
+              "chcp",
+              "65001"
+          ],
+          "icon": "terminal-cmd"
+      },
+      "Git Bash": {
+          "source": "Git Bash"
+      }
+},
+"editor.useTabStops": false,
+"dotnet.codeLens.enableReferencesCodeLens": false,
+"diffEditor.hideUnchangedRegions.enabled": true,
+"projectManager.git.baseFolders": [
+    "D:\\notoa\\Documents\\CsharpProjects",
+    "D:\\notoa\\Documents\\Python Projects",
+    "D:\\notoa\\Documents\\RustProjects"
+],
+"accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+},
+"accessibility.signals.noInlayHints": {
+    "sound": "off",
+    "announcement": "off"
+},
+"accessibility.signals.lineHasWarning": {
+    "sound": "off",
+    "announcement": "off"
+},
+"accessibility.signals.lineHasError": {
+    "sound": "off",
+    "announcement": "off"
+},
+"arduino.useArduinoCli": true,
+"C_Cpp.intelliSenseEngine": "Tag Parser",
+"workbench.settings.applyToAllProfiles": [],
+"C_Cpp.default.browse.path": [
+    "D:\\Program Files (x86)\\Arduino\\libraries",
+    "D:\\Program Files (x86)\\Arduino\\tools",
+    "D:\\Program Files (x86)\\Arduino\\hardware"
+],
+"github.copilot.editor.enableAutoCompletions": true,
+"git.openRepositoryInParentFolders": "never",
+"github.copilot.nextEditSuggestions.enabled": true,
+"remote.SSH.configFile": "C:\\Users\\notoa\\.ssh\\config",
+"remote.SSH.remotePlatform": {
+    "test": "linux",
+    "minipc": "linux"
+},
+"explorer.confirmPasteNative": false,
+"github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+},
+"typescript.experimental.useTsgo": false,
+"chat.instructionsFilesLocations": {
+    ".github/instructions": true
+},
+"azureResourceGroups.enableChatStandIn": false,
+"@azure.argTenant": "",
+"claudeCode.preferredLocation": "sidebar",
+"claudeCode.selectedModel": "default",
+"claudeCode.autosave": false,
+}

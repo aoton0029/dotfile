@@ -1,0 +1,23 @@
+[user]
+	name = noto akimitsu
+	email = aotonnnnn@gmail.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	excludesfile = ~/.gitignore_global
+	# autocrlf differs by OS (true on native Windows git, input on WSL/Linux) -
+	# set it in ~/.gitconfig.local instead of here.
+
+[include]
+	path = ~/.gitconfig.local
+
+[pull]
+	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate --all
