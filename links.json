@@ -6,6 +6,7 @@
     { "src": "claude/CLAUDE.md", "dest": "~/.claude/CLAUDE.md" },
     { "src": "claude/settings.json", "dest": "~/.claude/settings.json" },
     { "src": "claude/skills", "dest": "~/.claude/skills" },
+    { "src": "codex/AGENTS.md", "dest": "~/.codex/AGENTS.md" },
     { "src": "editor/vscode/settings.json", "dest": "$env:APPDATA/Code/User/settings.json" },
     { "src": "editor/vscode/keybindings.json", "dest": "$env:APPDATA/Code/User/keybindings.json" }
   ],
@@ -16,6 +17,7 @@
     { "src": "git/.gitignore_global", "dest": "~/.gitignore_global" },
     { "src": "claude/CLAUDE.md", "dest": "~/.claude/CLAUDE.md" },
     { "src": "claude/settings.json", "dest": "~/.claude/settings.json" },
-    { "src": "claude/skills", "dest": "~/.claude/skills" }
+    { "src": "claude/skills", "dest": "~/.claude/skills" },
+    { "src": "codex/AGENTS.md", "dest": "~/.codex/AGENTS.md" }
   ]
 }
