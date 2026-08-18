@@ -102,14 +102,17 @@ python <script> sync
 **Windows (タスクスケジューラ)**
 
 ```
-schtasks /create /tn "ai-history-sync" /tr "python C:\path\to\archive_ai_history.py sync --push" /sc daily /st 23:00
+schtasks /create /tn "ai-history-sync" /tr "python %USERPROFILE%\.claude\skills\archive-ai-history\scripts\archive_ai_history.py sync --push" /sc daily /st 23:00
 ```
 
 **Linux / WSL (cron)**
 
 ```
-0 23 * * * python3 ~/Documents/dotfile/scripts/archive_ai_history.py sync --push
+0 23 * * * python3 ~/.claude/skills/archive-ai-history/scripts/archive_ai_history.py sync --push
 ```
+
+`~/.claude/skills` は dotfiles リポジトリへのシンボリックリンクなので、
+リポジトリの実体がどこにあってもこのパスで辿れる。
 
 定期実行するなら `.archive-config.json` の `auto_push` を `true` にして
 `--push` を省略してもよい。ただし自動 push はマスク漏れが即確定するため、

@@ -83,7 +83,7 @@ Python の `re` 構文。JSON なのでバックスラッシュは二重にす�
 ## ルールを増やしたくなったら
 
 まず `extra_patterns` で足りるか検討する。組み込みルール自体の変更が要る場合は
-dotfiles リポジトリの `scripts/archive_ai_history.py` の `Masker.__init__` を編集する。
+スキルディレクトリ直下の `scripts/archive_ai_history.py` の `Masker.__init__` を編集する。
 検証対象に加えるには `_add(..., secret=True)` を指定する。
 
 **既に取り込み済みの履歴は遡ってマスクし直されない。**

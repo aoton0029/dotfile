@@ -4,7 +4,7 @@ description: >
   複数デバイスのローカルにある Claude Code / Codex の会話履歴を、秘匿情報をマスクした上で
   private な git リポジトリに蓄積するスキル。「履歴をアーカイブして」「AI履歴を同期して」
   「会話ログをgitに上げて」「過去のセッションを検索して」といった依頼で使う。
-  収集・マスク・検証・コミット・pushは全て scripts/archive_ai_history.py が行い、
+  収集・マスク・検証・コミット・pushは全て同梱の archive_ai_history.py が行い、
   このスキルはその起動と、初回セットアップ・失敗時の原因説明・除外設定の提案だけを担う。
   履歴ファイル自体は絶対に読まない。
 ---
@@ -12,9 +12,6 @@ description: >
 # AI履歴のアーカイブ
 
 Claude Code と Codex のローカル履歴を、マスクした上でアーカイブリポジトリに溜める。
-
-設計の詳細は dotfiles リポジトリの
-[docs/ai-history-archive-design.md](../../../docs/ai-history-archive-design.md) を参照。
 
 ## 絶対に守ること
 
@@ -29,11 +26,13 @@ Read / Grep / cat / head などで開いてはならない。**
 
 ## スクリプトの場所
 
-dotfiles リポジトリの `scripts/archive_ai_history.py`。
-このスキルは `~/.claude/skills` へのシンボリックリンク経由で読み込まれるため、
-相対パスでは辿れないことがある。見つからない場合は
-`~/Documents/dotfile/scripts/archive_ai_history.py` を試し、
-それでも無ければユーザーに dotfiles リポジトリの場所を尋ねる。
+このスキルディレクトリ直下の `scripts/archive_ai_history.py`。
+以降 `<script>` と書いた箇所はこのパスを指す。
+
+`~/.claude/skills` は dotfiles リポジトリへのシンボリックリンクなので、
+`..` を使ってリポジトリ側の他のディレクトリを辿ろうとしてはならない
+(リンク元のパスを字句的に遡ってしまい解決に失敗する)。
+スキルが使うファイルはこのディレクトリの内側だけに置く。
 
 ## 通常の同期
 
