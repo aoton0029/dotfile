@@ -1,38 +1,30 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(cargo check:*)",
-      "Bash(cargo build:*)",
-      "Bash(\"d:/notoa/Documents/app/MyMediaLab/docs/implements/media-collection-analysis-app/TASK-0005/setup-report.md\")",
-      "Bash(\"d:/notoa/Documents/app/MyMediaLab/docs/implements/media-collection-analysis-app/TASK-0006/setup-report.md\")",
-      "Bash(cargo test:*)",
-      "Bash(cargo sqlx:*)",
-      "Bash(sqlx database:*)",
-      "Bash(sqlx migrate:*)",
-      "Read(//c/Users/notoa/.claude/plugins/marketplaces/tsumiki/skills/dev-context/references/**)",
-      "Read(//c/Users/notoa/.claude/plugins/marketplaces/tsumiki/skills/dev-init/references/**)",
-      "Read(//c/Users/notoa/.claude/plugins/marketplaces/tsumiki/skills/dev-plan/references/**)",
-      "Bash(uv sync:*)",
-      "Bash(uv run:*)",
-      "Bash(uv add:*)",
-      "Bash(git -C d:/notoa/Documents/app/KindleTranscription rev-parse --show-toplevel)",
-      "Read(//d/notoa/Documents/app/KindleTranscription/$\\(git -C d:/notoa/Documents/app/KindleTranscription rev-parse --show-toplevel 2>/dev/null || echo d:/notoa/Documents/app/KindleTranscription\\)/src/kindle_transcription/capture/**)",
-      "Bash(echo \"EXIT:$?\")",
-      "Bash(uv pip:*)",
-      "Bash(ls docs/tasks/media-collection-analysis-app/TASK-003*.md)",
-      "Bash(npx tsc:*)",
-      "Bash(pnpm add:*)",
-      "Bash(pnpm exec:*)",
-      "Skill(tsumiki:tdd-tasknote)",
-      "Skill(tsumiki:tdd-tasknote:*)",
-      "Bash(pnpm test:*)"
-    ]
-  },
-  "model": "claude-sonnet-5",
   "enabledPlugins": {
     "tsumiki@tsumiki": true,
-    "frontend-design@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true,
+    "dig@kuu-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "tsumiki": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/classmethod/tsumiki.git"
+      }
+    },
+    "kuu-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "fumiya-kume/claude-code"
+      }
+    }
   },
   "effortLevel": "low",
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
+  "theme": "dark",
+  "switchModelsOnFlag": false,
+  "model": "opus"
 }
