@@ -18,11 +18,14 @@ description: tech-notes リポジトリ（Obsidian Vault）の知識カードか
 - `/quiz-knowledge <テーマorタグ>` — 範囲指定（例: `concurrency`）
 - 「カードから出題して」等の依頼文
 
+`--vault <path>` を付けると、その回だけ Vault の場所を上書きできる（vault.md の解決順を参照）。
+残りの引数は出題範囲として扱う。
+
 ## 手順
 
 ### 1. 出題範囲を決める
 
-指定があればそのテーマ／タグ。無ければ `knowledge/` から選ぶ:
+指定があればそのテーマ／タグ。無ければ `knowledge/` から（サブフォルダを含めて）選ぶ:
 
 - `updated` が古いもの（忘れている頃合い）
 - `confidence: verified` のもの（検証済みの知識ほど定着させる価値がある）
