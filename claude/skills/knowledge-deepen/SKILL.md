@@ -1,5 +1,5 @@
 ---
-name: deepen-knowledge
+name: knowledge-deepen
 description: tech-notes リポジトリ（Obsidian Vault）の薄いカード・未検証カードを1枚選び、因果関係や関連概念を掘り下げて育てるスキル。「カードを育てて」「薄いカードを深掘りして」「hearsay を検証して」「tech-notes を手入れしたい」「deepen して」といった依頼で使うこと。confidence の昇格は人間の判断に委ね、AI が verified を付けることはしない。
 ---
 
@@ -10,13 +10,13 @@ capture は「浅くても残す」ためのスキル。このスキルはその
 
 ## 前提を読む
 
-- [../capture-knowledge/references/vault.md](../capture-knowledge/references/vault.md)
-- [../capture-knowledge/references/card-format.md](../capture-knowledge/references/card-format.md)
+- [../knowledge-capture/references/vault.md](../knowledge-capture/references/vault.md)
+- [../knowledge-capture/references/card-format.md](../knowledge-capture/references/card-format.md)
 
 ## 起動のされ方
 
-- `/deepen-knowledge` — 引数なし。薄いカードを提示して選ばせる
-- `/deepen-knowledge <ノート名orテーマ>` — 対象を直接指定
+- `/knowledge-deepen` — 引数なし。薄いカードを提示して選ばせる
+- `/knowledge-deepen <ノート名orテーマ>` — 対象を直接指定
 - 「hearsay を検証して」等の依頼文
 
 `--vault <path>` を付けると、その回だけ Vault の場所を上書きできる（vault.md の解決順を参照）。

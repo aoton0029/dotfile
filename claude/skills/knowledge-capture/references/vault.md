@@ -1,13 +1,13 @@
 # tech-notes Vault の場所と構造
 
-この参照は `capture-knowledge` / `recall-knowledge` / `deepen-knowledge` /
-`quiz-knowledge` の4スキル共通。
+この参照は `knowledge-capture` / `knowledge-recall` / `knowledge-deepen` /
+`knowledge-quiz` の4スキル共通。
 
 ## Vault の場所を解決する
 
 Vault は別リポジトリで、クローン先はマシンによって違う。次の順で解決する。
 
-1. **スキル引数でパスが渡されていればそれ**（`/recall-knowledge --vault <path> <テーマ>` など）。
+1. **スキル引数でパスが渡されていればそれ**（`/knowledge-recall --vault <path> <テーマ>` など）。
 2. **`~/.claude/tech-notes-path`** — 1行目に Vault ルートの絶対パスだけを書いたファイル。
 3. どちらも無ければ **`AskUserQuestion` でパスを尋ね、答えを 2 のファイルに書き出す**。
 
@@ -53,7 +53,7 @@ Vault は別リポジトリで、クローン先はマシンによって違う�
 Dataview の `FROM "knowledge"` もサブフォルダを含むので、MOC 側の変更は要らない。
 
 既にフラットに置かれているカードは、まとめて移動しない。
-`deepen-knowledge` などでそのカードを触ったついでに、該当カテゴリへ移す。
+`knowledge-deepen` などでそのカードを触ったついでに、該当カテゴリへ移す。
 
 ### knowledge/ と decisions/ の役割
 

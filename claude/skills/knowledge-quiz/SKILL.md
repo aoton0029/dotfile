@@ -1,21 +1,21 @@
 ---
-name: quiz-knowledge
+name: knowledge-quiz
 description: tech-notes リポジトリ（Obsidian Vault）の知識カードから説明問題・応用問題を出題し、想起によって定着させるスキル。「カードから出題して」「知識を復習したい」「クイズを出して」「理解できているか確認して」「quiz して」といった依頼で使うこと。読み返しではなく、カードを見ずに説明させることを目的とする。
 ---
 
 # 想起で定着させる
 
 カードを読み返しても定着はしない。**カードを閉じた状態で説明させる**のがこのスキルの役目。
-副産物として、説明できなかった箇所はカードが薄い箇所でもある（→ `deepen-knowledge`）。
+副産物として、説明できなかった箇所はカードが薄い箇所でもある（→ `knowledge-deepen`）。
 
 ## 前提を読む
 
-- [../capture-knowledge/references/vault.md](../capture-knowledge/references/vault.md)
+- [../knowledge-capture/references/vault.md](../knowledge-capture/references/vault.md)
 
 ## 起動のされ方
 
-- `/quiz-knowledge` — 引数なし。出題範囲はこちらで選ぶ
-- `/quiz-knowledge <テーマorタグ>` — 範囲指定（例: `concurrency`）
+- `/knowledge-quiz` — 引数なし。出題範囲はこちらで選ぶ
+- `/knowledge-quiz <テーマorタグ>` — 範囲指定（例: `concurrency`）
 - 「カードから出題して」等の依頼文
 
 `--vault <path>` を付けると、その回だけ Vault の場所を上書きできる（vault.md の解決順を参照）。
@@ -56,7 +56,7 @@ description: tech-notes リポジトリ（Obsidian Vault）の知識カードか
 
 ### 4. 締め
 
-- 説明できなかったカードを列挙し、`deepen-knowledge` の対象として提示する
+- 説明できなかったカードを列挙し、`knowledge-deepen` の対象として提示する
 - カードの記述自体に誤り・不足が見つかったものは、それも分けて挙げる
 
-このスキルではカードを書き換えない。修正は `deepen-knowledge` に渡す。
+このスキルではカードを書き換えない。修正は `knowledge-deepen` に渡す。

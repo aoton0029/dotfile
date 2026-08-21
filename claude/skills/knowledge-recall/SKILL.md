@@ -1,5 +1,5 @@
 ---
-name: recall-knowledge
+name: knowledge-recall
 description: これから学ぶ・設計する・実装するテーマに関連する原理を、tech-notes リポジトリ（Obsidian Vault）の知識カードから検索して提示するスキル。「関連する知識を引いて」「tech-notes から探して」「recall して」「過去にこのテーマで何を書いた？」「設計を始める前に蓄積を確認したい」といった依頼で必ず使うこと。frontmatter の tags/summary を直接読んで検索し、Dataview クエリには依存しない。起動は必ず人間が行い、他の設計系スキルから自動呼び出ししない。
 ---
 
@@ -10,14 +10,14 @@ description: これから学ぶ・設計する・実装するテーマに関連�
 
 ## 前提を読む
 
-- [../capture-knowledge/references/vault.md](../capture-knowledge/references/vault.md) — Vault の場所と構造
-- カード形式は [../capture-knowledge/references/card-format.md](../capture-knowledge/references/card-format.md)
+- [../knowledge-capture/references/vault.md](../knowledge-capture/references/vault.md) — Vault の場所と構造
+- カード形式は [../knowledge-capture/references/card-format.md](../knowledge-capture/references/card-format.md)
 
 ## 手順
 
 ### 1. テーマを受け取る
 
-`/recall-knowledge <テーマ>` の引数、または依頼文中の記述。どちらも同じ入力として扱う。
+`/knowledge-recall <テーマ>` の引数、または依頼文中の記述。どちらも同じ入力として扱う。
 情報がゼロのときだけ「これから何をやりますか」と聞く。
 
 `--vault <path>` を付けると、その回だけ Vault の場所を上書きできる（vault.md の解決順を参照）。
@@ -58,4 +58,4 @@ MOC を入口にした段階検索への切り替えを検討する。それま�
 ### 5. 締め
 
 最後に、今回のテーマで**カードが欠けている領域**があれば1〜2行で指摘する
-（作業後の `capture-knowledge` の的になる）。カードの作成はしない。
+（作業後の `knowledge-capture` の的になる）。カードの作成はしない。

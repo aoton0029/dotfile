@@ -17,3 +17,18 @@ dotfiles プロジェクトは、複数のデバイス・環境(Windows/PowerShe
   環境依存の書き方をしていないか注意する。
 - マシン固有の値(例: `autocrlf` など)はこのリポジトリに直接書かず、`~/.gitconfig.local` のような
   各マシン側ファイルに逃がす設計になっている。この方針を壊すような変更は避ける。
+
+## スキルの命名規則
+
+- Claude のスキルは `claude/skills/<スキル名>/SKILL.md` の**1階層固定**で置く。
+  グループ用のディレクトリを間に挟むと認識されないので、階層ではなく**名前**でグループ化する。
+- スキル名は `<グループ名>-<動詞または対象>` の形にする。ディレクトリ名と
+  `SKILL.md` の `name:` は必ず一致させる。
+  - 例: `knowledge-capture` / `knowledge-recall` / `knowledge-deepen` / `knowledge-quiz`
+  - 例: `conventions-init`(規約を作る側) / `conventions-follow`(規約に従う側)
+  - 例: `docs-prd` / `docs-resolve`
+- 同じグループの仲間がまだ1つしかないスキル(`git-ops`, `archive-ai-history`,
+  `unknowns-field-guide` など)は無理に接頭辞を付けず、2つ目が生まれた時点で改名する。
+- スキルを改名するときは、ディレクトリ名・`name:`・他スキルからの相対リンク・
+  `docs/` 配下の言及をまとめて追随させる。`claude/skills` はディレクトリ単位で
+  リンクしているため `links.json` の変更は不要。
