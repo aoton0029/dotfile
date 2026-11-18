@@ -1,87 +1,70 @@
-# tech-notes Vault の場所と構造
+# KnowledgeVault の場所と、スキルが使う場所
 
 この参照は `knowledge-capture` / `knowledge-recall` / `knowledge-deepen` /
 `knowledge-quiz` の4スキル共通。
 
+Vault の構成と規約の正本は Vault 自身にある。このファイルは、Vault の場所の見つけ方と、
+4スキルが Vault のどこを使うかだけを書く。**作業の前に必ず Vault の `AGENTS.md` と、
+書く space の `spaces/<space>/RULES.md` を読む。** この参照と食い違ったら Vault 側に従う。
+
 ## Vault の場所を解決する
 
-Vault は別リポジトリで、クローン先はマシンによって違う。次の順で解決する。
+Vault は GitHub の `KnowledgeVault` リポジトリで、クローン先はマシンによって違う。次の順で解決する。
 
 1. **スキル引数でパスが渡されていればそれ**（`/knowledge-recall --vault <path> <テーマ>` など）。
-2. **`~/.claude/tech-notes-path`** — 1行目に Vault ルートの絶対パスだけを書いたファイル。
+2. **`~/.claude/knowledge-vault-path`** — 1行目に Vault ルートの絶対パスだけを書いたファイル。
 3. どちらも無ければ **`AskUserQuestion` でパスを尋ね、答えを 2 のファイルに書き出す**。
 
-解決したパスは使う前に、**ディレクトリが実在し `knowledge/` を含むか**を確かめる。
+解決したパスは使う前に、**ディレクトリが実在し、`AGENTS.md` と `spaces/` を含むか**を確かめる。
 含まないなら Vault ではないので、**勝手にディレクトリを作らず**その旨を伝えて 3 に戻る。
-`~/.claude/tech-notes-path` の内容が壊れていた場合も同じ（黙って作り直さず、指摘してから聞く）。
+`~/.claude/knowledge-vault-path` の内容が壊れていた場合も同じ（黙って作り直さず、指摘してから聞く）。
 
-見つけた Vault ルートを基準に、以下の相対パスだけを使う。
+## space
 
-## 構造
+書く先は `spaces/<space>/` の下だけ。space は `AGENTS.md` の「space」の表にある**既定の space**
+（今は `main`）を使う。ユーザーが別の space を指定したときだけ変える。
+以下のパスは `<space>` = `main` の例で書く。
 
-```
-<vault>/
-  MOC/            分野ごとの入口ノート。中身は Dataview クエリ1つだけ
-  knowledge/      技術そのものの知識。カテゴリごとのサブディレクトリに分類
-    concurrency/
-    storage/
-    ...
-  decisions/      実プロジェクトでの選択記録 (ADR)。フラット。ファイル名は "YYYY-MM-DD <題>"
-  templates/      Obsidian コアプラグイン「テンプレート」用
-  attachments/
-```
+## 4スキルが使う場所
 
-### knowledge/ はカテゴリ別
+| スキルの言葉 | Vault の場所 | 見分け方 |
+|---|---|---|
+| 知識カード（再利用できる原理） | `spaces/main/encyclopedia/` | frontmatter の `type: tech` |
+| 判断の記録（一回性の選択） | `spaces/main/syntheses/` | `type: decision`、ファイル名は `YYYY-MM-DD <題>` |
+| 分野 | frontmatter の `categories`（複数可） | 語は `_meta/taxonomy.md` |
+| 分野の入口（MOC） | `spaces/main/maps/<category>.md` | `type: map` |
+| 人に確認を求める提案 | `spaces/main/_review/` | 未登録の category、`owner: human` のカードへの変更など |
 
-カードは `knowledge/<カテゴリ>/<ノート名>.md` に置く。
+- `encyclopedia/` は**フラット**。カテゴリのサブフォルダは作らない。分野は `categories` だけで表す。
+  分類を変えてもファイルが動かないので、リンクが壊れない。
+- `encyclopedia/` には `type: term`（用語の定義）や `person` なども並ぶ。
+  カードを探すときは `type: tech` で絞る。recall では `term` と `syntheses/` も検索に含めてよい。
+- テンプレートは `_meta/templates/main/tech.md`（カード）、`decision.md`（判断の記録）、`map.md`（入口）。
+  新しく作るときはテンプレートを読み、`{{title}}` と `{{date:YYYY-MM-DD}}` を自分で埋める。
 
-- **カテゴリは主分野1つ**で決める。フォルダは1つしか選べないので、迷ったら
-  「このカードを探しに行くとき最初に開く場所」を選ぶ
-- **またがる分野は `tags` で表現する**。フォルダは主分野だけ、タグは複数。
-  横断的な分類はタグと MOC の仕事で、フォルダはあくまで置き場所
-- **カテゴリ名はタグ名・MOC 名と揃える**（英小文字の kebab-case。
-  `knowledge/concurrency/` ↔ `#concurrency` ↔ `MOC/concurrency.md`）
-- **新カテゴリを作るのは、そこに入るカードが3枚以上見込めるときだけ。**
-  それ未満は既存の近いカテゴリに入れるか `knowledge/` 直下に置く。
-  1枚しかないフォルダが並ぶと、分類が探索の役に立たなくなる
+## 書いてはいけない場所
 
-**ファイル名は Vault 全体で一意**である必要がある。フォルダを分けても
-`[[wikilink]]` は basename で解決されるため、別カテゴリでも同名は事故になる。
-新規作成前に必ず**全カテゴリ横断**で同名チェックをする。
+- `human/`、`_meta/`、`AGENTS.md`、`spaces/<space>/RULES.md`、`README.md`、`CLAUDE.md` は読むだけ。
+- `owner: human` のノートは書き換えない。変えたいときは `_review/` に差分を提案する。
+- 既存のノートを改名・移動・削除しない。
 
-検索・走査は常に `knowledge/` 以下を**再帰的に**行う（直下だけ見ない）。
-Dataview の `FROM "knowledge"` もサブフォルダを含むので、MOC 側の変更は要らない。
+## 判断の記録とカードの関係
 
-既にフラットに置かれているカードは、まとめて移動しない。
-`knowledge-deepen` などでそのカードを触ったついでに、該当カテゴリへ移す。
+- `decision` は**一回性**。「あのプロジェクトで、あの制約下で、こう決めた」
+- `tech` のカードは**再利用可能**。decision から一般化して取り出したもの
 
-### knowledge/ と decisions/ の役割
-
-- `decisions/` は**一回性**。「あのプロジェクトで、あの制約下で、こう決めた」
-- `knowledge/` は**再利用可能**。decisions から一般化して抽出したもの
-
-`decisions/` では**顧客名・システム名などの固有名詞を使わず、判断を左右した制約の形に
+decision では**顧客名・システム名などの固有名詞を使わず、判断を左右した制約の形に
 抜き出して書く**（「A社の受注基盤」ではなく「日次100万件の更新がある既存テーブル」）。
-秘匿目的ではなく、制約の形で書けばそのまま `knowledge/` へ昇格できるため。
+秘匿目的ではなく、制約の形で書けばそのままカードへ取り出せるため。
 固有名詞を消すと判断が追えなくなる箇所だけは元の記述を残してよい。
 
-decision を書いたら知識として持ち出せる部分を knowledge に昇格させ、
-knowledge 側からは根拠となった decision へ `[[...]]` を張る。
+decision を書いたら知識として持ち出せる部分をカードに取り出し、
+カード側からは根拠となった decision へ `[[...]]` を張る。
 
-## MOC ノート
+## 入口（maps）
 
-該当分野の MOC が無ければ作る。中身は Dataview クエリだけでよい
-（一覧を手でメンテするファイルは作らない）。
+該当分野の `maps/<category>.md` が無ければ、テンプレート `map.md` から作る。
+中身は Obsidian の Bases のクエリ（`base` のコードブロック）だけで、一覧を手で書かない。
 
-````markdown
-# concurrency
-
-```dataview
-TABLE summary AS "一言で", confidence AS "確信度", updated AS "更新"
-FROM "knowledge" AND #concurrency
-SORT updated DESC
-```
-````
-
-Dataview は人間が Obsidian で見るとき専用。AI 側はクエリを実行できないので、
+Bases は人間が Obsidian で見るとき専用。AI 側はクエリを実行できないので、
 検索は常に frontmatter を直接読む前提で行う。

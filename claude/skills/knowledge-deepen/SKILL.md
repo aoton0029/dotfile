@@ -1,6 +1,6 @@
 ---
 name: knowledge-deepen
-description: tech-notes リポジトリ（Obsidian Vault）の薄いカード・未検証カードを1枚選び、因果関係や関連概念を掘り下げて育てるスキル。「カードを育てて」「薄いカードを深掘りして」「hearsay を検証して」「tech-notes を手入れしたい」「deepen して」といった依頼で使うこと。confidence の昇格は人間の判断に委ね、AI が verified を付けることはしない。
+description: KnowledgeVault（Obsidian Vault）の薄いカード・未検証カードを1枚選び、因果関係や関連概念を掘り下げて育てるスキル。「カードを育てて」「薄いカードを深掘りして」「hearsay を検証して」「tech-notes を手入れしたい」「deepen して」といった依頼で使うこと。confidence の昇格は人間の判断に委ね、AI が verified を付けることはしない。
 ---
 
 # 薄いカードを育てる
@@ -26,8 +26,8 @@ capture は「浅くても残す」ためのスキル。このスキルはその
 
 ### 1. 対象を選ぶ
 
-テーマ指定があればそれを使う。無ければ `knowledge/` の frontmatter を
-（サブフォルダを含めて再帰的に）走査して候補を出す:
+テーマ指定があればそれを使う。無ければ `encyclopedia/` の `type: tech` のカードの frontmatter を
+走査して候補を出す（`owner: human` のカードは除く）:
 
 - `confidence: hearsay` のもの（作業キューの本体。`updated` が古い順）
 - 「検証していないこと」が空、または「根本メカニズム」が数行しかないもの

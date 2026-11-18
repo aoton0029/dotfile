@@ -1,18 +1,30 @@
 # 知識カードのフォーマット
 
-4スキル共通の参照。ファイル名がそのままノート名になるので `topic` は frontmatter に持たない。
+4スキル共通の参照。ファイル名がそのままノート名になる。frontmatter と見出しの正本は
+Vault のテンプレート `_meta/templates/main/tech.md` で、ここと食い違ったらテンプレートに従う。
 
-## knowledge/ のカード
+## カード（`spaces/main/encyclopedia/`、`type: tech`）
 
 ```markdown
 ---
-tags: [concurrency, db, transaction]
-confidence: hearsay          # verified | reasoned | hearsay
+type: tech
+aliases: []
+categories: [concurrency]    # 分野。_meta/taxonomy.md の語だけ。複数可
+tags: [db, transaction]      # 特徴語。_meta/taxonomy.md の語だけ
 summary: 更新時に版番号を照合し、衝突したら失敗させる並行制御
+status: draft                # draft | review_needed（human_verified は人間だけ）
+confidence: hearsay          # verified | reasoned | hearsay
+owner: ai
 sources:
-  - https://...
-updated: 2026-08-18
+  - kind: web
+    url: https://...
+    title: ページの題
+    retrieved: 2026-11-18
+created: 2026-11-18
+updated: 2026-11-18
 ---
+
+# 楽観的ロック
 
 関連: [[インデックスの選択性]] / [[2026-08-14 outbox vs 2pc]]
 
@@ -35,9 +47,14 @@ updated: 2026-08-18
 confidence を下げている根拠。ここが空のカードは疑う。
 ```
 
-`decisions/` のカードも同じ frontmatter を持たせる。本文は
-「状況（制約）／選択肢／決定と理由／その後」で書き、末尾に昇格させた
-`knowledge/` カードへ `[[...]]` を張る。
+未登録の category と tag は使わない。必要なら `_review/` に提案を出し、
+いったん既存の近い語で書く。
+
+## 判断の記録（`spaces/main/syntheses/`、`type: decision`）
+
+frontmatter はカードと同じ形（`type: decision`。`confidence` は持たない）。
+本文はテンプレート `decision.md` の見出し「状況（制約）／選択肢／決定と理由／その後／
+切り出した知識」で書き、最後に取り出したカードへ `[[...]]` を張る。
 
 ## 何を書き、何を書かないか
 
@@ -47,9 +64,11 @@ confidence を下げている根拠。ここが空のカードは疑う。
 書かない: ライブラリの使い方・API シグネチャ / コードスニペットそのもの
 （原理の説明に必要な最小限を除く）/ プロジェクト固有の設定値。
 
+仕組みを説明できず、定義だけになる語は `type: term`（用語）にする。カードにしない。
+
 ## リンクと要約の置き場
 
-- リンクは **`[[wikilink]]` に統一**。相対パスのリンクは使わない
+- リンクは **`[[ノート名]]` に統一**。名前が一意なのでファイル名だけでよい
 - 一言要約は **frontmatter の `summary` にだけ**置く。本文に重複させない
 - 本文中で他のカードに言及するときは素の単語ではなく `[[...]]` で書く
   （存在しないカード名へのリンクも可。書くべきカードの印になる）
@@ -65,6 +84,7 @@ confidence を下げている根拠。ここが空のカードは疑う。
 **AI が新規作成するカードの初期値は `hearsay` か `reasoned` のみ。
 `verified` を AI が付けてはいけない**（昇格は人間が手で行う）。
 推測が検証済みの顔をして混ざることが、この仕組みの最大のリスク。
+`status: human_verified` も同じく人間だけが付ける。
 
 ## 下限品質
 
